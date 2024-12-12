@@ -4,7 +4,7 @@ def parse_expression(user_input: str) -> list:
     """
     Turns user input into a list of tokens
 
-    :param user_input: user input
+    :param: user_input: user input
     :return: list of tokens
     """
     token_list = []
@@ -27,7 +27,7 @@ def parse_expression(user_input: str) -> list:
 
 
 def main():
-    print(parse_expression("1234444 + 123123.....232334 \ta..."))
+    print(parse_expression("1234*(444!)+123.123"))
 
 if __name__ == "__main__":
     main()

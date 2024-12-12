@@ -18,7 +18,6 @@ def remove_white_spaces(string: str) -> str:
     """
     return "".join(string.split())
 
-
 # Should support adding more parenthesis types?
 def check_parenthesis(string: str) -> list:
     stack = []
