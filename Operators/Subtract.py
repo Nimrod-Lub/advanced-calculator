@@ -9,7 +9,15 @@ class Subtract(BinaryOperator):
         super().__init__(SUBTRACT_PRECEDENCE)
 
     def calculate(self, *args):
-        pass
+        return args[0] - args[1]
 
     def validate(self, *args):
         ...
+
+
+def main():
+    s = Subtract()
+    print(s.calculate(3, 2))
+
+if __name__ == "__main__":
+    main()

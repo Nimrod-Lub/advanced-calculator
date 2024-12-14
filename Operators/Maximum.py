@@ -9,7 +9,15 @@ class Maximum(BinaryOperator):
         super().__init__(MAXIMUM_PRECEDENCE)
 
     def calculate(self, *args):
-        pass
+        return max(args[0],args[1])
 
     def validate(self, *args):
         ...
+
+
+def main():
+    m = Maximum()
+    print(m.calculate(-10.5, 10.35))
+
+if __name__ == "__main__":
+    main()

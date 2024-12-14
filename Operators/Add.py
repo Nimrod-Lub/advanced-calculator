@@ -9,7 +9,15 @@ class Add(BinaryOperator):
         super().__init__(ADD_PRECEDENCE)
 
     def calculate(self, *args):
-        pass
+        return float(args[0]) + float(args[1])
 
     def validate(self, *args):
         ...
+
+
+def main():
+    a = Add()
+    print(a.calculate("123", "-203"))
+
+if __name__ == "__main__":
+    main()

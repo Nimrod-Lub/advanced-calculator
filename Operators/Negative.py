@@ -9,7 +9,15 @@ class Negative(UnaryOperator):
         super().__init__(NEGATIVE_PRECEDENCE, LEFT_SIDE)
 
     def calculate(self, *args):
-        pass
+        return -args[0]
 
     def validate(self, *args):
         ...
+
+
+def main():
+    n = Negative()
+    print(n.calculate(5))
+
+if __name__ == "__main__":
+    main()

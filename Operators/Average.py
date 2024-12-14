@@ -9,7 +9,16 @@ class Average(BinaryOperator):
         super().__init__(AVERAGE_PRECEDENCE)
 
     def calculate(self, *args):
-        pass
+        return (float(args[0]) + float(args[1])) / 2
 
     def validate(self, *args):
         ...
+
+
+
+def main():
+    a = Average()
+    print(a.calculate("123", "-203"))
+
+if __name__ == "__main__":
+    main()

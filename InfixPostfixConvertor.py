@@ -12,26 +12,27 @@ def convert_to_postfix(tokens: list) -> list:
 
     for symbol in tokens:
         if is_number(symbol):
-            str_postfix += symbol
+            str_postfix.append(symbol)
         elif symbol == '(':
             operators_stack.append(symbol)
         elif symbol == ')':
             while operators_stack[-1] != '(':
-                str_postfix += operators_stack.pop()
+                str_postfix.append(operators_stack.pop())
             operators_stack.pop() # Get rid of the parenthesis
         else: # Is an operator
             while len(operators_stack) > 0 and compare_precedence(OPERATORS[operators_stack[-1]], OPERATORS[symbol]) > 0:
-                str_postfix += operators_stack.pop()
+                str_postfix.append(operators_stack.pop())
             operators_stack.append(symbol)
 
     while len(operators_stack) != 0:
-        str_postfix += operators_stack.pop()
+        str_postfix.append(operators_stack.pop())
 
     return str_postfix
 
 
 def main():
-    print(convert_to_postfix([["1234"],"+", ["12312"]]))
+    print(convert_to_postfix(["~", "12","+", "76", "*", "3", "!"]))
 
 if __name__ == "__main__":
     main()
+
