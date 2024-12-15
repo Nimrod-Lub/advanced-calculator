@@ -11,7 +11,7 @@ class Modulo(BinaryOperator):
     def calculate(self, *args): #TODO fix this
         return  args[0] % args[1]
 
-    def validate(self, *args):
+    def validate_calculation(self, *args):
         ...
 
 

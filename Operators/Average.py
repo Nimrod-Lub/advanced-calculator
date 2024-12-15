@@ -11,7 +11,7 @@ class Average(BinaryOperator):
     def calculate(self, *args):
         return (float(args[0]) + float(args[1])) / 2
 
-    def validate(self, *args):
+    def validate_calculation(self, *args):
         ...
 
 

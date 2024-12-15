@@ -20,5 +20,5 @@ class UnaryOperator(Operator):
         pass
 
     @abstractmethod
-    def validate(self, *args):
+    def validate_calculation(self, *args):
         pass

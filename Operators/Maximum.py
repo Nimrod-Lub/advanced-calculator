@@ -11,7 +11,7 @@ class Maximum(BinaryOperator):
     def calculate(self, *args):
         return max(args[0],args[1])
 
-    def validate(self, *args):
+    def validate_calculation(self, *args):
         ...
 
 

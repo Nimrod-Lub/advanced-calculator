@@ -1,27 +1,17 @@
-from Issues import Issue
-from Util import is_number, OPERATORS, PARENTHESIS, OTHER_CHARACTERS
+from MyExceptions.InvalidDots import NonDecimalDot, NoDigitsAfterDecimalPoint, TwoDecimalPointsOneNumber
+from MyExceptions.InvalidParenthesis import ClosingUnopenedParenthesis, OpenParenthesis
+from Util import remove_white_spaces, is_paren, is_operator, is_other_character
 
 
-def check_validity(user_input: str) -> list:
-    issues = []
+def check_validity(user_input: str):
     user_input = remove_white_spaces(user_input)
-
-    return issues
-
-
-def remove_white_spaces(string: str) -> str:
-    """
-    Removes white spaces from user input
-
-    :param string: user input
-    :return: user input without white spaces
-    """
-    return "".join(string.split())
+    check_valid_letters(user_input)
+    check_dots(user_input)
+    check_parenthesis(user_input)
 
 # Should support adding more parenthesis types?
-def check_parenthesis(string: str) -> list:
+def check_parenthesis(string: str):
     stack = []
-    issues = []
     for char in string:
         if char == '(':
             stack.append(char)
@@ -29,34 +19,26 @@ def check_parenthesis(string: str) -> list:
             if len(stack) > 0:
                 stack.pop()
             else:
-                ...
-                # Report error - close without open
+                raise ClosingUnopenedParenthesis()
+
     if len(stack) > 0:
-        ...
-        # Report error - open without close
-    return issues
+        raise OpenParenthesis()
 
 
-def check_valid_letters(string: str) -> list:
-    issues = []
+def check_valid_letters(string: str):
     for char in string:
-        if not char.isdigit() and not char in OPERATORS.keys() and not char in PARENTHESIS and not char in OTHER_CHARACTERS:
-            ...
-            # Report error - unrecognized character
-
-    return issues
+        if not char.isdigit() and not is_operator(char) and not is_paren(char) and not is_other_character(char):
+            raise ValueError("Symbol " + char + " is undefined")
 
 
-def check_dots(string: str) -> list:
-    issues = []
+def check_dots(string: str):
     curr_is_number = False
     curr_number_has_decimal = False
 
     for index in range(len(string)):
         if string[index] == '.':
             if index == 0 or index == len(string) - 1:  # Dot at the end or beginning
-                ...
-                # Report error - dot must be used as a decimal point
+                raise NonDecimalDot()
 
             else:
                 if curr_is_number and not curr_number_has_decimal:  # Correct usage
@@ -64,42 +46,21 @@ def check_dots(string: str) -> list:
                     curr_is_number = False
 
                 elif not curr_is_number and curr_number_has_decimal:  # Multiple dots in a row
-                    ...
-                    # Report error - dot cannot be used multiple times in a row
+                    raise NonDecimalDot()
 
                 elif not curr_is_number and not curr_number_has_decimal:  # Random usage of dot
-                    ...
-                    # Report error - dot must be used as a decimal point
+                    raise NonDecimalDot()
 
                 else:  # Dot used twice on one string of digits
-                    ...
-                    # Report error - dot is used twice on one number
-
+                    raise TwoDecimalPointsOneNumber()
 
         elif string[index].isdigit():
             curr_is_number = True
 
         else:
-            if not curr_is_number and curr_number_has_decimal:
-                ...
-                # Report error - no digits after a decimal point
+            if not curr_is_number and curr_number_has_decimal: # No digits after a decimal point
+                raise NoDigitsAfterDecimalPoint()
+
             curr_is_number = False
             curr_number_has_decimal = False
 
-    return issues
-
-
-"""
-def check_number_validity(token: str):
-    dot_count_edges, dot_count = 0, 0
-    if token[0] == '.':
-        dot_count_edges += 1
-        token = token[1:]
-        #handle error
-    if token[-1] == '.':
-        dot_count_edges += 1
-        token = token[:-1]
-        #handle error
-
-
-"""

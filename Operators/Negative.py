@@ -11,7 +11,7 @@ class Negative(UnaryOperator):
     def calculate(self, *args):
         return -args[0]
 
-    def validate(self, *args):
+    def validate_calculation(self, *args):
         ...
 
 

@@ -13,7 +13,7 @@ class Factorial(UnaryOperator):
             return factorial(int(args[0]))
         return -1 # TODO handle
 
-    def validate(self, *args):
+    def validate_calculation(self, *args):
         ...
 
 def factorial(num):

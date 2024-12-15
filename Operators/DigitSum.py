@@ -23,7 +23,7 @@ class DigitSum(UnaryOperator):
         return digit_sum * sign
 
 
-    def validate(self, *args):
+    def validate_calculation(self, *args):
         ...
 
 def main():

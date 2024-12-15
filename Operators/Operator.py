@@ -16,5 +16,5 @@ class Operator(ABC):
         ...
 
     @abstractmethod
-    def validate(self, *args) -> list:
+    def validate_calculation(self, *args) -> list:
         ...

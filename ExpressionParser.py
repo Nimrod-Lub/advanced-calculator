@@ -1,4 +1,5 @@
-from Util import is_number
+from Util import is_number, remove_white_spaces
+
 
 def parse_expression(user_input: str) -> list:
     """
@@ -7,6 +8,7 @@ def parse_expression(user_input: str) -> list:
     :param: user_input: user input
     :return: list of tokens
     """
+    user_input = remove_white_spaces(user_input)
     token_list = []
     number = ""
     for char in user_input:
