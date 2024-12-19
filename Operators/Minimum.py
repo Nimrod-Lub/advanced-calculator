@@ -1,7 +1,7 @@
 from Operators.BinaryOperator import BinaryOperator
 
 MINIMUM_PRECEDENCE = 5
-
+MINIMUM_SIGN = '&'
 
 class Minimum(BinaryOperator):
 

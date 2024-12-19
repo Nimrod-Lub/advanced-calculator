@@ -1,7 +1,7 @@
 from Operators.BinaryOperator import BinaryOperator
 
 MAXIMUM_PRECEDENCE = 5
-
+MAXIMUM_SIGN = '$'
 
 class Maximum(BinaryOperator):
 

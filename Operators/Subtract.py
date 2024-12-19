@@ -1,7 +1,7 @@
 from Operators.BinaryOperator import BinaryOperator
 
 SUBTRACT_PRECEDENCE = 1
-
+SUBTRACT_SIGN = '-'
 
 class Subtract(BinaryOperator):
 

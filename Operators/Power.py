@@ -3,7 +3,7 @@ import math
 from Operators.BinaryOperator import BinaryOperator
 
 POWER_PRECEDENCE = 3
-
+POWER_SIGN = '^'
 
 class Power(BinaryOperator):
 

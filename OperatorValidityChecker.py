@@ -3,13 +3,29 @@ from Operators.UnaryOperator import LEFT_SIDE, RIGHT_SIDE, UnaryOperator
 from Util import is_number, is_open_paren, is_operator, get_operator, is_close_paren, is_binary_operator, \
     is_unary_operator
 
-#TODO go over this again and check if the logic is sound
+
+#TODO go over this again and check if the logic is sound - operators
+#TODO go over this again and check if the logic is sound - parenthesis
 #TODO convert isinstance commands to util module commands
 
-def check_operators_validity(tokens: list):
+
+
+def check_operators_and_parenthesis_validity(tokens: list):
     for index in range(len(tokens)):
         if is_operator(tokens[index]):
             validate_operator(tokens, index)
+        elif is_close_paren(tokens[index]):
+            validate_parenthesis(tokens, index)
+
+
+def validate_parenthesis(tokens: list, position: int):
+    if is_open_paren(tokens[position - 1]):
+        exit() # Error - empty parenthesis
+
+    if position != len(tokens) - 1:
+        if is_open_paren(tokens[position + 1]):
+            exit() # Error - No operator between two parenthesis
+
 
 
 def validate_operator(tokens: list, position: int):
@@ -21,7 +37,7 @@ def validate_operator(tokens: list, position: int):
 
 def validate_binary_operator(tokens: list, position: int):
     if position == 0 or position == len(tokens) - 1:
-        exit()  # Do nothing for binary operator at the edges of the expression
+        exit()  # Error - binary operator cannot be placed at the edge of the expression
 
     before = tokens[position - 1]
 
@@ -64,7 +80,8 @@ def validate_left_unary_operator(tokens: list, position: int):
 
     if is_operator(after):
         if (isinstance(get_operator(after), BinaryOperator)
-                or (isinstance(get_operator(after), UnaryOperator) and not get_operator(after).get_side() == LEFT_SIDE)):
+                or (isinstance(get_operator(after), UnaryOperator) and not get_operator(
+                    after).get_side() == LEFT_SIDE)):
             exit()  # Handle error - this operator cannot be placed after a left unary operator
 
     if position == 0:  # Don't need to check before the operator if it's at the beginning of the expression
@@ -76,8 +93,10 @@ def validate_left_unary_operator(tokens: list, position: int):
         exit()  # Handle error - this character cannot be placed before a left unary operator
 
     if is_operator(before):
-        if not is_binary_operator(before) and is_unary_operator(before) and not get_operator(before).get_side() == LEFT_SIDE:
+        if not is_binary_operator(before) and is_unary_operator(before) and not get_operator(
+                before).get_side() == LEFT_SIDE:
             exit()  # Handle error - this operator cannot be placed before a left unary operator
+
 
 def validate_right_unary_operator(tokens: list, position: int):
     if position == 0:
@@ -90,7 +109,8 @@ def validate_right_unary_operator(tokens: list, position: int):
 
     if is_operator(before):
         if (isinstance(get_operator(before), BinaryOperator)
-                or (isinstance(get_operator(before), UnaryOperator) and not get_operator(before).get_side() == RIGHT_SIDE)):
+                or (isinstance(get_operator(before), UnaryOperator) and not get_operator(
+                    before).get_side() == RIGHT_SIDE)):
             exit()  # Handle error - this character cannot be placed before a right unary operator
 
     if position == len(tokens) - 1:  # Don't need to check after the operator if it's at the end of the expression
@@ -102,12 +122,13 @@ def validate_right_unary_operator(tokens: list, position: int):
         exit()  # Handle error - this character cannot be placed after a right unary operator
 
     if is_operator(after):
-        if not is_binary_operator(after) and is_unary_operator(after) and not get_operator(after).get_side() == RIGHT_SIDE:
+        if not is_binary_operator(after) and is_unary_operator(after) and not get_operator(
+                after).get_side() == RIGHT_SIDE:
             exit()  # Handle error - this operator cannot be placed after a right unary operator
 
 
 def main():
-    check_operators_validity(["5", "!", "!", "~", "1", ])
+    check_operators_and_parenthesis_validity(["5", "!", "!", "~", "1", ])
 
 
 if __name__ == "__main__":

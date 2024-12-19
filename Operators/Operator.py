@@ -1,14 +1,14 @@
 from abc import ABC, abstractmethod
 
-
+LARGEST_PRECEDENCE = 100
 
 class Operator(ABC):
-    _precedence: int
+    _precedence: float
 
-    def __init__(self, precedence: int):
+    def __init__(self, precedence: float):
         self._precedence = precedence
 
-    def get_precedence(self) -> int:
+    def get_precedence(self) -> float:
         return self._precedence
 
     @abstractmethod

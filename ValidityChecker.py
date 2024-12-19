@@ -5,11 +5,17 @@ from Util import remove_white_spaces, is_paren, is_operator, is_other_character
 
 def check_validity(user_input: str):
     user_input = remove_white_spaces(user_input)
+    if check_empty_input(user_input):
+        exit() # Error - empty input
     check_valid_letters(user_input)
     check_dots(user_input)
     check_parenthesis(user_input)
 
-# Should support adding more parenthesis types?
+
+def check_empty_input(string: str):
+    return len(string) == 0
+
+
 def check_parenthesis(string: str):
     stack = []
     for char in string:

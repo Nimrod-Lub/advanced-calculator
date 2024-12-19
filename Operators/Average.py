@@ -1,7 +1,7 @@
 from Operators.BinaryOperator import BinaryOperator
 
 AVERAGE_PRECEDENCE = 5
-
+AVERAGE_SIGN = '@'
 
 class Average(BinaryOperator):
 

@@ -1,7 +1,7 @@
 from Operators.BinaryOperator import BinaryOperator
 
 ADD_PRECEDENCE = 1
-
+ADD_SIGN = '+'
 
 class Add(BinaryOperator):
 

@@ -3,7 +3,7 @@ from ExpressionParser import parse_expression
 from InfixPostfixConvertor import convert_to_postfix
 from MyExceptions.InvalidDots import InvalidDots
 from MyExceptions.InvalidParenthesis import InvalidParenthesis
-from OperatorValidityChecker import check_operator_validity
+from OperatorValidityChecker import check_operators_and_parenthesis_validity
 from ValidityChecker import check_validity
 
 
@@ -24,7 +24,7 @@ def input_expressions():
             print("Error:", str(ip))
         else:
             expression_tokens = parse_expression(user_input)
-            check_operators_validity(expression_tokens)
+            check_operators_and_parenthesis_validity(expression_tokens)
             postfix_expression = convert_to_postfix(expression_tokens)
             result = calculate_expression(postfix_expression)
             print("Result: " + str(result))

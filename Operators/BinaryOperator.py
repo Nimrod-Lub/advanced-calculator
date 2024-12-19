@@ -5,11 +5,11 @@ from Operators.Operator import Operator
 
 class BinaryOperator(Operator):
 
-    def __init__(self, precedence: int):
+    def __init__(self, precedence: float):
         super().__init__(precedence)
 
     @abstractmethod
-    def calculate(self, *args):
+    def calculate(self, *args): #TODO make this two operands
         pass
 
     @abstractmethod

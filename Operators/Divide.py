@@ -1,7 +1,7 @@
 from Operators.BinaryOperator import BinaryOperator
 
 DIVIDE_PRECEDENCE = 2
-
+DIVIDE_SIGN = '/'
 
 class Divide(BinaryOperator):
 

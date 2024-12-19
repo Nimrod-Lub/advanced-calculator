@@ -1,7 +1,7 @@
 from Operators.UnaryOperator import UnaryOperator, LEFT_SIDE
 
 NEGATIVE_PRECEDENCE = 6
-
+NEGATIVE_SIGN = '~'
 
 class Negative(UnaryOperator):
 

@@ -1,7 +1,7 @@
 from Operators.UnaryOperator import UnaryOperator, RIGHT_SIDE
 
 FACTORIAL_PRECEDENCE = 6
-
+FACTORIAL_SIGN = '!'
 
 class Factorial(UnaryOperator):
 

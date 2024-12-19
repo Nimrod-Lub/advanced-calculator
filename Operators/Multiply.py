@@ -1,7 +1,7 @@
 from Operators.BinaryOperator import BinaryOperator
 
 MULTIPLY_PRECEDENCE = 2
-
+MULTIPLY_SIGN = '*'
 
 class Multiply(BinaryOperator):
 

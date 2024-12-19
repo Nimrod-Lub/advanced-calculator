@@ -1,7 +1,7 @@
 from Operators.BinaryOperator import BinaryOperator
 
 MODULO_PRECEDENCE = 4
-
+MODULO_SIGN = '%'
 
 class Modulo(BinaryOperator):
 
