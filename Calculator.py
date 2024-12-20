@@ -1,6 +1,5 @@
-from Operators.BinaryOperator import BinaryOperator
-from Operators.UnaryOperator import UnaryOperator
-from Util import is_number, OPERATORS
+from OperatorsUtil import OPERATORS, is_unary_operator, get_operator, is_binary_operator
+from Util import is_number
 
 
 def calculate_expression(postfix_expression: list):
@@ -10,10 +9,10 @@ def calculate_expression(postfix_expression: list):
             operator_stack.append(token)
         else:
             result = 0.0
-            if isinstance(OPERATORS[token], UnaryOperator):
+            if is_unary_operator(token):
                 arg1 = float(operator_stack.pop())
-                result = OPERATORS[token].calculate(arg1)
-            elif isinstance(OPERATORS[token], BinaryOperator):
+                result = get_operator(token).calculate(arg1)
+            elif is_binary_operator(token):
                 arg2 = float(operator_stack.pop())
                 arg1 = float(operator_stack.pop())
                 result = OPERATORS[token].calculate(arg1, arg2)

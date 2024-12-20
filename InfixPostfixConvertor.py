@@ -1,4 +1,5 @@
-from Util import is_number, is_open_paren, is_close_paren, get_operator
+from Util import is_number, is_open_paren, is_close_paren
+from OperatorsUtil import get_operator
 from Operators.Operator import Operator
 
 

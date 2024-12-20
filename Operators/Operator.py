@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 LARGEST_PRECEDENCE = 100
 
+
 class Operator(ABC):
     _precedence: float
 
@@ -18,3 +19,6 @@ class Operator(ABC):
     @abstractmethod
     def validate_calculation(self, *args) -> list:
         ...
+
+    def validate_individual_operator(self, tokens: list, position: int):
+        pass

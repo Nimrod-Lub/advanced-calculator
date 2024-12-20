@@ -1,10 +1,8 @@
-from Operators.Minimum import MINIMUM_SIGN
 from Operators.SignMinus import SIGN_MINUS_SIGN
 from Operators.Subtract import SUBTRACT_SIGN
-from Operators.UnaryMinus import UnaryMinus, UNARY_MINUS_SIGN
-from Util import is_number, remove_white_spaces, is_open_paren, is_operator, get_operator, is_binary_operator, \
-    is_left_unary_operator
-
+from Operators.UnaryMinus import UNARY_MINUS_SIGN
+from OperatorsUtil import is_binary_operator, is_left_unary_operator
+from Util import is_number, remove_white_spaces, is_open_paren
 
 def parse_expression(user_input: str) -> list:
     tokens = tokenize_expression(user_input)
@@ -85,11 +83,15 @@ def check_if_sign_minus(tokens: list, index: int) -> bool:
 
 
 def main():
-    tokens = tokenize_expression("---1234*(444!)+--123.123")
+    """tokens = tokenize_expression("---1234*(444!)+--123.123")
     print(tokens)
     tokens = parse_expression("---1234*(-44--4!)+--123.123")
-    print(tokens)
+    print(tokens)"""
 
+    tokens = tokenize_expression("~--~--3#")
+    print(tokens)
+    tokens = parse_expression("~--~--3#")
+    print(tokens)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,7 @@
 from MyExceptions.InvalidDots import NonDecimalDot, NoDigitsAfterDecimalPoint, TwoDecimalPointsOneNumber
 from MyExceptions.InvalidParenthesis import ClosingUnopenedParenthesis, OpenParenthesis
-from Util import remove_white_spaces, is_paren, is_operator, is_other_character
+from Util import remove_white_spaces, is_paren, is_other_character
+from OperatorsUtil import is_operator
 
 
 def check_validity(user_input: str):
