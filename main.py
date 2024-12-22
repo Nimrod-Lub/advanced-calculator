@@ -4,6 +4,7 @@ from Operators.Add import ADD_SIGN
 from Operators.Average import AVERAGE_SIGN
 from Operators.DigitSum import DIGIT_SUM_SIGN
 from Operators.Divide import DIVIDE_SIGN
+from Operators.Factorial import FACTORIAL_SIGN
 from Operators.Maximum import MAXIMUM_SIGN
 from Operators.Minimum import MINIMUM_SIGN
 from Operators.Modulo import MODULO_SIGN
@@ -28,6 +29,7 @@ def info():
     print(f"\t Average       {AVERAGE_SIGN}")
     print(f"\t Negative      {NEGATIVE_SIGN}")
     print(f"\t Sum of digits {DIGIT_SUM_SIGN}")
+    print(f"\t Factorial     {FACTORIAL_SIGN}")
 
     print("Extra features:")
     print("\tParenthesis, decimal point, unary minus")
