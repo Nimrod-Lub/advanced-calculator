@@ -8,10 +8,10 @@ class Subtract(BinaryOperator):
     def __init__(self):
         super().__init__(SUBTRACT_PRECEDENCE)
 
-    def calculate(self, *args):
-        return args[0] - args[1]
+    def calculate(self, num1: float, num2: float):
+        return num1 - num2
 
-    def validate_calculation(self, *args):
+    def validate_calculation(self, num1: float, num2: float):
         ...
 
 

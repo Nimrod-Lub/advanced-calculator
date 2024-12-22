@@ -5,6 +5,12 @@ from OperatorsUtil import is_binary_operator, is_left_unary_operator
 from Util import is_number, remove_white_spaces, is_open_paren
 
 def parse_expression(user_input: str) -> list:
+    """
+    Tokenizes the expression
+
+    :param user_input: str - user input
+    :return: a list of tokens. Each token is either an operator, parenthesis, or a number
+    """
     tokens = tokenize_expression(user_input)
     convert_minus(tokens)
     return tokens
@@ -12,9 +18,10 @@ def parse_expression(user_input: str) -> list:
 
 def tokenize_expression(user_input: str) -> list:
     """
-    Turns user input into a list of tokens
+    Creates a single token for every operator, parenthesis and number,
+    stores them in a list in order and returns the list
 
-    :param: user_input: user input
+    :param: user_input: str - user input
     :return: list of tokens
     """
     user_input = remove_white_spaces(user_input)
@@ -38,6 +45,13 @@ def tokenize_expression(user_input: str) -> list:
 
 
 def convert_minus(tokens: list):
+    """
+    Receives the list of tokens, and replaces binary minus tokens with
+    unary minus and sign minus tokens when necessary
+
+    :param tokens: list of tokens
+    :return: list of tokens with unary minus and sign minus tokens
+    """
     if tokens[0] == SUBTRACT_SIGN:
         tokens[0] = UNARY_MINUS_SIGN
 
@@ -47,35 +61,41 @@ def convert_minus(tokens: list):
 
 
 def check_if_special_minus(tokens: list, index: int):
+    """
+    If the current minus is a unary minus or a sign minus, replaces the binary minus
+    with the correct minus
+
+    :param tokens: list of tokens
+    :param index: the index of the current minus being checked
+    """
     if not check_if_unary_minus(tokens, index):
         check_if_sign_minus(tokens, index)
 
 
 def check_if_unary_minus(tokens: list, index: int) -> bool:
+    """
+    If the current minus is a unary minus, replaces the binary minus
+    with a unary minus
+
+    :param tokens: list of tokens
+    :param index: the index of the current minus being checked
+    """
 
     if is_open_paren(tokens[index - 1]) or tokens[index - 1] == UNARY_MINUS_SIGN:
         tokens[index] = UNARY_MINUS_SIGN
         return True
 
-    """    for index in range(len(tokens) - 1, -1, -1):
-            if tokens[index] == SUBTRACT_SIGN:
-                if (is_number(tokens[index + 1]) or is_open_paren(tokens[index + 1])
-                        or (is_operator(tokens[index + 1] and type(get_operator(tokens[index + 1])) == UnaryMinus))):
-                    tokens[index] = UNARY_MINUS_SIGN
-    """
-
-    """  for index in range(1, len(tokens) - 1):
-            if tokens[index] == SUBTRACT_SIGN:
-                if (is_number(tokens[index + 1])
-                        or is_open_paren(tokens[index + 1])
-                        or (is_operator(tokens[index + 1] and type(get_operator(tokens[index + 1])) == UnaryMinus))
-                        or type(get_operator(tokens[index - 1])) == UnaryMinus):
-                    tokens[index] = UNARY_MINUS_SIGN
-    """
     return False
 
-def check_if_sign_minus(tokens: list, index: int) -> bool:
 
+def check_if_sign_minus(tokens: list, index: int) -> bool:
+    """
+    If the current minus is a sign minus, replaces the binary minus
+    with a sign minus
+
+    :param tokens: list of tokens
+    :param index: the index of the current minus being checked
+    """
     if is_binary_operator(tokens[index - 1]) or is_left_unary_operator(tokens[index - 1]):
         tokens[index] = SIGN_MINUS_SIGN
         return True

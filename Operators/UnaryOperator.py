@@ -7,6 +7,10 @@ RIGHT_SIDE = "RIGHT"
 
 
 class UnaryOperator(Operator):
+    """
+        Base class of unary operators. Every unary operator extends this class
+    """
+
     _side: str
 
     def __init__(self, precedence: float, side: str):
@@ -17,9 +21,9 @@ class UnaryOperator(Operator):
         return self._side
 
     @abstractmethod
-    def calculate(self, *args):  #TODO make this one operand
+    def calculate(self, num: float):
         pass
 
     @abstractmethod
-    def validate_calculation(self, *args):
+    def validate_calculation(self, num: float):
         pass

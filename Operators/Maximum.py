@@ -8,8 +8,8 @@ class Maximum(BinaryOperator):
     def __init__(self):
         super().__init__(MAXIMUM_PRECEDENCE)
 
-    def calculate(self, *args):
-        return max(args[0],args[1])
+    def calculate(self, num1: float, num2: float):
+        return max(num1,num2)
 
     def validate_calculation(self, *args):
         ...

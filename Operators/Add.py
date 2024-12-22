@@ -8,10 +8,10 @@ class Add(BinaryOperator):
     def __init__(self):
         super().__init__(ADD_PRECEDENCE)
 
-    def calculate(self, *args):
-        return float(args[0]) + float(args[1])
+    def calculate(self, num1: float, num2: float):
+        return num1 + num2
 
-    def validate_calculation(self, *args):
+    def validate_calculation(self, num1: float, num2: float):
         ...
 
 
