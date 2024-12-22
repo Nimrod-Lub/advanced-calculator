@@ -17,6 +17,8 @@ class DigitSum(UnaryOperator):
 
         digit_sum = 0
         for digit in number_str[:]:
+            if digit == 'e':
+                break
             digit_sum += float(digit)
 
         return digit_sum

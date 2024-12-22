@@ -3,6 +3,7 @@ from Operators.UnaryOperator import UnaryOperator, RIGHT_SIDE
 
 FACTORIAL_PRECEDENCE = 6
 FACTORIAL_SIGN = '!'
+MAX_FACTORIAL_NUM = 170
 
 
 class Factorial(UnaryOperator):
@@ -21,6 +22,9 @@ class Factorial(UnaryOperator):
         if num < 0:
             raise MathematicalException("Factorial of a negative number is undefined",
                                         f"{num}{FACTORIAL_SIGN}")
+
+        if num > MAX_FACTORIAL_NUM:
+            raise MathematicalException(f"Cannot execute this operation, the result would be too large", f"{num}{FACTORIAL_SIGN}")
 
 
 def factorial(num: float):

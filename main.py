@@ -57,11 +57,12 @@ def input_expressions():
         except ParseException as pe:
             pe.print_exception()
         except KeyboardInterrupt:
-            print("\nExiting program, received keyboard interrupt.")
-            exit()
+            print('\nPlease enter "exit" if you wish to stop the program')
         except EOFError:
             print("\nExiting program, reached EOF")
             exit()
+        except ValueError:
+            print("\nThe number is too big or too small")
         else:
 
             print("Result: " + str(result))

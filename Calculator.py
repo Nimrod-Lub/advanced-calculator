@@ -2,11 +2,11 @@ from ExpressionParser import parse_expression
 from InfixPostfixConvertor import convert_to_postfix
 from MyExceptions.ParseException import MathematicalException, FormattingException
 from OperatorValidityChecker import check_operators_and_parenthesis_validity
-from OperatorsUtil import OPERATORS, is_unary_operator, get_operator, is_binary_operator, is_left_unary_operator
+from OperatorsUtil import is_unary_operator, get_operator, is_binary_operator, is_left_unary_operator
 from Util import is_number
 from ValidityChecker import check_validity
 
-PRECISION = 10
+PRECISION = 12
 
 class Calculator:
     def calculate_postfix_expression(self, postfix_expression: list):
@@ -40,6 +40,9 @@ class Calculator:
                         result = get_operator(token).calculate(float(arg1), float(arg2))
                     result = round(result, PRECISION)
                     operator_stack.append(result)
+
+                    if str(result) == "inf" or str(result) == "-inf":
+                        raise MathematicalException("Number is too big or too small", f"{result}")
                 except OverflowError:
                     raise MathematicalException("Number is too big or too small"
                                                 ,f"problematic operator: {token}")

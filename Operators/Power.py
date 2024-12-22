@@ -18,8 +18,8 @@ class Power(BinaryOperator):
     def validate_calculation(self, num1: float, num2: float):
         if num1 < 0 and -1 < num2 < 1:
             raise MathematicalException("Root of negative number is undefined", f"{num1}{POWER_SIGN}{num2}")
-        if num1 == 0 and num2 == 0:
-            raise MathematicalException("0 to the power of 0 is undefined", f"{num1}{POWER_SIGN}{num2}")
+        if num1 == 0 and num2 <= 0:
+            raise MathematicalException(f"{num1} to the power of {num2} is undefined", f"{num1}{POWER_SIGN}{num2}")
 
 
 def main():

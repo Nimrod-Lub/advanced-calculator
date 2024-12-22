@@ -59,38 +59,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-""" previous_token = None  # To track the previous token for unary check
-for symbol in tokens:
-    if is_number(symbol):
-        str_postfix.append(symbol)
-
-    elif is_open_paren(symbol):
-        operators_stack.append(symbol)
-
-    elif is_close_paren(symbol):
-        # Pop operators until we see an open parenthesis
-        while operators_stack and not is_open_paren(operators_stack[-1]):
-            str_postfix.append(operators_stack.pop())
-        operators_stack.pop()  # Pop the open parenthesis
-
-    else:  # The token is an operator
-        # Check if the operator is a left unary operator
-        if is_left_unary_operator(symbol):
-            # It's a left unary operator
-            operators_stack.append(symbol)  # Handle other unary operators
-        else:
-            # It's a binary operator
-            while (operators_stack and not is_open_paren(operators_stack[-1]) and
-                   compare_precedence(get_operator(operators_stack[-1]), get_operator(symbol)) >= 0):
-                str_postfix.append(operators_stack.pop())
-            operators_stack.append(symbol)
-
-    # Update the previous token tracker
-    previous_token = symbol
-
-# Pop remaining operators
-while operators_stack:
-    str_postfix.append(operators_stack.pop())
-
-return str_postfix"""
